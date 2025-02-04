@@ -65,3 +65,10 @@ This project focuses on developing an **Abstractive Summarizer for YouTube Trans
   print(summary)
   ```
 
+## License
+This project is licensed under the MIT License.
+
+## Contributing
+Pull requests are welcome! Feel free to submit issues or suggestions.
+
+
