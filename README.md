@@ -1,41 +1,67 @@
-# YouTube Summarizer
+## 📌 Abstractive YouTube Transcript Summarizer
 
-## Overview
-The **YouTube Summarizer** is a powerful tool that extracts and summarizes the transcript of a YouTube video using advanced Natural Language Processing (NLP). It helps users quickly grasp key points without watching the entire video.
+### 🔥 Overview
+This project focuses on developing an **Abstractive Summarizer for YouTube Transcripts**. It extracts key insights from YouTube videos using **LaMini-Flan-T5-248M** and **Llama-2-7b-chat-hf**, enabling concise and meaningful summaries from lengthy transcripts.
 
-## Features
-- **Transcript Extraction**: Fetches the video's transcript.
-- **AI-Powered Summarization**: Uses NLP models to generate concise summaries.
-- **Multiple Summary Lengths**: Options for short, medium, or detailed summaries.
-- **Easy-to-Use**: Input a YouTube video URL and get a summary instantly.
+### ✨ Features
+- **YouTube Transcript Extraction**: Retrieves transcripts using the YouTube Transcript API.  
+- **Text Preprocessing**: Cleans and normalizes text by removing special characters, correcting spelling, and standardizing formatting.  
+- **Chunking Mechanism**: Splits long transcripts into manageable segments using **LangChain Recursive Character Text Splitter**.  
+- **Abstractive Summarization**: Utilizes **LaMini-Flan-T5-248M** and **Llama-2-7b-chat-hf** to generate concise summaries.  
 
-## Installation
+---
 
-Clone the repository and install the required dependencies:
-```bash
-git clone <repo-url>
-cd youtube-summarizer
-pip install -r requirements.txt
-```
+## 🚀 Methodology
 
-## Usage
-Run the summarizer with a YouTube video URL:
-```bash
-python summarizer.py --url <YouTube-Video-URL>
-```
+### 1️⃣ Data Collection & Preprocessing  
+- Extract transcripts using **YouTube Transcript API**.  
+- Clean text by removing noise and normalizing the structure.  
 
-## Dependencies
-- Python 3.x
-- `youtube-transcript-api`
-- `transformers` (for NLP-based summarization)
-- `requests`
+### 2️⃣ Text Chunking  
+- Uses **LangChain Recursive Character Text Splitter** to manage token limitations.  
+- Implements **chunk overlap** to maintain coherence between text segments.  
 
-## License
-This project is licensed under the MIT License.
+### 3️⃣ Summarization Model  
+- Employs **LaMini-Flan-T5-248M** and **Llama-2-7b-chat-hf** for abstractive summarization.  
+- Evaluates summaries across **different video durations and topics**.  
 
-## Contributing
-Pull requests are welcome! Feel free to submit issues or suggestions.
+---
 
-## Author
-[Your Name]
+## 📊 Results & Evaluation
+- Fine-tuned **LLMs improve summarization accuracy** significantly.  
+- **Chunking mechanism enhances coherence**, ensuring high-quality summaries.  
+
+---
+
+## 🛠 Tech Stack
+- **Python**  
+- **LangChain**  
+- **Hugging Face Transformers**  
+- **YouTube Transcript API**  
+- **PyTorch**  
+- **LaMini-Flan-T5 / Llama-2**  
+
+---
+
+## 🏗️ Installation & Usage  
+
+### 📌 Prerequisites  
+- Install dependencies:  
+  ```bash
+  pip install -r requirements.txt
+  ```
+
+### 🔄 Usage  
+- Extract YouTube transcripts:
+  ```python
+  from youtube_transcript_api import YouTubeTranscriptApi
+  transcript = YouTubeTranscriptApi.get_transcript("VIDEO_ID")
+  ```
+- Run summarization:
+  ```python
+  from transformers import pipeline
+  summarizer = pipeline("summarization", model="LaMini-Flan-T5-248M")
+  summary = summarizer(transcript)
+  print(summary)
+  ```
 
